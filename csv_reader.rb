@@ -1,0 +1,23 @@
+require "csv"
+require_relative "book"
+
+class CsvReader
+  def initialize
+    @books_in_stock = []
+  end
+
+  def read_in_csv_data(csv_file_name)
+    CSV.foreach(csv_file_name, headers: true) do |row|
+      @books_in_stock << BookInStock.new(row["ISBN"], row["Price"])
+    end
+  end
+
+  def total_value_in_stock
+    sum = 0.0
+    @books_in_stock.each do |book|
+      sum += book.price_in_cents
+    end
+  return sum
+  end
+  
+end
