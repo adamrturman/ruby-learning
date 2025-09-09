@@ -1,10 +1,16 @@
 class Fighter
-  attr_accessor :health, :name
+  attr_reader :health
+  attr_accessor :name
 
   def initialize(name, health)
     @name = name
     @health = Float(health)
   end
+
+  def take_damage
+    @health -= 1
+  end
+
 end
 
 class Fight
@@ -28,7 +34,7 @@ class Fight
   end
 
   private def reduce_health(fighter)
-    fighter.health -= 1
+    fighter.take_damage
   end
 
   private def check_for_winner
@@ -61,9 +67,5 @@ fight.punch(rocky)
 fight.punch(rocky)
 fight.punch(rocky)
 fight.punch(rocky)
-fight.punch(rocky)
-fight.punch(rocky)
-fight.punch(rocky)
-
 
 puts fight
