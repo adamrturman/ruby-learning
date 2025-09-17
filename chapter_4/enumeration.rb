@@ -51,3 +51,23 @@ def only_long_words(words)
 end
 
 p only_long_words(["Hi", "Thomas", "the", "Tank", "Engine"])  # ["too short", "Thomas", "too short", "Tank", "Engine"]
+
+
+# Enumerator
+
+array = [1, 2, 3]
+
+enum = array.to_enum
+
+puts enum.next  # 1
+puts enum.next  # 2
+puts enum.next  # 3
+
+# Create an enumerator that iterates through lowercase letters a-z
+alphabet = ('a'..'z').to_enum
+
+# Loop through and print each letter of the alphabet
+# This will terminate after printing 'z' when the enumerator is exhausted
+loop do
+  puts alphabet.next
+end
