@@ -71,3 +71,10 @@ alphabet = ('a'..'z').to_enum
 loop do
   puts alphabet.next
 end
+
+
+result = []
+
+"cat".each_char.with_index{ |item, index| result << [item, index]}
+
+p result  # [["c", 0], ["a", 1], ["t", 2]]
